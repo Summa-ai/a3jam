@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { LlmService } from './llm.service';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateLlmDto } from './dto/create-llm.dto';
 import { UpdateLlmDto } from './dto/update-llm.dto';
+import { LlmService } from './llm.service';
 
 @Controller('llm')
 export class LlmController {
@@ -11,6 +11,11 @@ export class LlmController {
   create(@Body() createLlmDto: CreateLlmDto) {
     return this.llmService.create(createLlmDto);
   }
+
+  // @Post('test')
+  // test(@Body('word') body: string) {
+  //   return this.llmService.llm(body);
+  // }
 
   @Get()
   findAll() {
@@ -25,10 +30,5 @@ export class LlmController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateLlmDto: UpdateLlmDto) {
     return this.llmService.update(+id, updateLlmDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.llmService.remove(+id);
   }
 }

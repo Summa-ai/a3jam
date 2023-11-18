@@ -7,13 +7,21 @@ export async function getDictionaryResponse(word: string) {
     `https://siwar.ksaa.gov.sa/api/alriyadh/search?query=${word}`,
     {
       headers: {
-        apikey: "7e9eba94-01fb-4863-b6c8-2e9618882775",
+        apikey: process.env.SIWAR_API_KEY!,
       },
     }
   ).then((res) => res.json());
-
+  console.log(response);
   if (response.length === 0) {
-    console.log("null");
+    const request = await fetch(process.env.BACKEND_RUL!, {
+      method: "POST",
+      body: JSON.stringify({ word: word }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json());
+    console.log(request);
   } else {
     console.log(response);
   }

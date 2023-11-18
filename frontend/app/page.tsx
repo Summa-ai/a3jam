@@ -1,33 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MenuIcon } from "../public/menu";
+import AppBar from "../shared/appBar";
 import Bottom from "../shared/bottomBar";
 
 export default function Home() {
   return (
     <div className="relative w-screen flex flex-col">
-      <div className="absolute z-[-1] h-[156px] w-screen">
-        <Image src="/header.png" alt="" fill className="object-fill" />
-      </div>
-      <div className="flex flex-row w-screen justify-between items-center px-5 py-2">
-        <Image
-          src="/arabic_hakathon.png"
-          alt=""
-          width={100}
-          height={212}
-          className="object-fill"
-        />
-        <Image
-          src="/header_logo.png"
-          alt=""
-          width={190}
-          height={212}
-          className="object-fill"
-        />
-        <div className="text-white">{MenuIcon}</div>
-      </div>
-      <div className="h-10"></div>
-      <div className="absolute z-[-1] top-[100px]  right-0">
+      <AppBar />
+      <div className="absolute z-[-1] top-[100px] right-0">
         <Image src="/background_shadow.png" alt="" width={551} height={100} />
       </div>
       <div
@@ -36,15 +16,16 @@ export default function Home() {
       >
         <div className="flex flex-col justify-center items-center text-text">
           <Image src="/logo.png" width={150} height={150} alt="LOGO" />
-          <p>هو مدقق ومعرب لغوي آلي، يُلهمك لتصوغ نصوصك بأسلوب خالٍ</p>
-          <p>من العيوب الإملائية، ويمنحك فهمًا متقنًا لإعراب الجمل من خلال</p>
-          <p>ربط سهل ومبتكر للمعجم.</p>
-          <div className="h-5"></div>
+          <p>هو مدقق ومعرب لغوي آلي، يُلهمك لتصوغ</p>
+          <p>نصوصك بأسلوب خالٍ من العيوب الإملائية،</p>
+          <p>ويمنحك فهمًا متقنًا لإعراب الجمل ومعنى </p>
+          <p>الكلام بمختلف السياق .</p>
+          <div className="h-5" />
           <Link
             href="/corrector"
-            className="bg-primaryLight text-white py-2 px-3 rounded-md z-50 font-rtl"
+            className="bg-[#009CA2] border-[1px] border-[#008677] shadow-lg text-white py-2 px-3 rounded-md z-50 font-rtl"
           >
-            جرب أعجم الآن - مجاناً
+            جرب أعجم الآن - التجربة المجانية
           </Link>
         </div>
         <div className="flex justify-center items-center w-screen pt-7">
@@ -62,58 +43,88 @@ export default function Home() {
         className="flex flex-col justify-center items-center text-text"
         dir="rtl"
       >
-        <p className="font-rtl text-primaryLight text-3xl">يدقق لك اينما كنت</p>
+        <p className="font-rtl text-primaryLight text-3xl">مزايا اعجم</p>
         <div className="h-[16px]" />
-        <p>
-          لم يعد تصحيح القواعد أو تصحيح الإملاء أو معرفة الإعراب مشكلة بعد الآن!
-        </p>
-        <p>اعجم معك أينما كنت تكتب، سواء في تطبيقات سطح المكتب، أو مواقع</p>
-        <p>
-          الويب، أو أثناء تصفّحك لوسائل التواصل الاجتماعي، أو حتى خلال كتابة
-          رسائلك.
-        </p>
+        <p>يدعم أعجم 6 مستهدفات برمجان اللغة العربية 2023</p>
       </div>
       <div className="h-[54px]" />
-      <div className="grid grid-rows-1 grid-cols-1 md:grid-cols-4 gap-10 gap-x-10 w-full place-items-center px-10 z-50">
-        <div className="w-full lg:max-w-[30rem] max-w-[20rem] h-[164px] shadow-lg rounded-lg flex flex-col justify-center items-center gap-5 bg-white">
-          <p>التواصل الإجتماعي</p>
+
+      <div
+        className="grid grid-flow-dense grid-rows-2 grid-cols-1 lg:grid-rows-2 lg:grid-cols-11 gap-10  w-full place-items-center px-10 "
+        dir="rtl"
+      >
+        <div className="w-[373px] lg:w-full lg:col-span-4 bg-white shadow-2xl h-[170px] rounded-lg flex flex-col justify-center items-center p-5 gap-2">
           <Image
-            src="/social.png"
+            src="/detect.png"
             alt=""
-            width={500}
-            height={90}
-            className=" object-fill"
+            width={90}
+            height={120}
+            className="object-contain"
           />
+          <p className="font-black text-lg">
+            كشف معاني الكلمات بناء على سياق الجملة
+          </p>
+          <p>معنى الكلام يتغير معا تغير السياق</p>
         </div>
-        <div className="w-full lg:max-w-[30rem] max-w-[20rem] h-[164px] shadow-lg rounded-lg flex flex-col justify-center items-center gap-5 bg-white">
-          <p>المراسلات و البريد الإلكتروني</p>
+        <div className="w-[373px] lg:w-full lg:col-span-3 bg-white shadow-2xl h-[170px] rounded-lg flex flex-col justify-center items-center p-5 gap-2">
           <Image
-            src="/emails.png"
+            src="/a2z.png"
             alt=""
-            width={600}
-            height={90}
-            className=" object-fill"
+            width={90}
+            height={120}
+            className="object-contain"
           />
+          <p className="font-black text-lg">تعريب الكلمات من أ إلى ي</p>
+          <p>أعجم قدها بإمكانه تعريب النصوص</p>
         </div>
-        <div className="w-full lg:max-w-[30rem] max-w-[20rem] h-[164px] shadow-lg rounded-lg flex flex-col justify-center items-center gap-5 bg-white">
-          <p>المتصفحات</p>
+        <div className="w-[373px] lg:w-full lg:col-span-4 bg-white shadow-2xl h-[170px] rounded-lg flex flex-col justify-center items-center p-5 gap-2">
           <Image
-            src="/browsers.png"
+            src="/brain.png"
             alt=""
-            width={700}
-            height={90}
-            className=" object-fill"
+            width={90}
+            height={120}
+            className="object-contain"
           />
+          <p className="font-black text-lg">تطوير المنصة بالذكاء الإصطناعي</p>
+          <p>اعجم مزود بأحدث تقنيات الذكاء الإصطناعي</p>
         </div>
-        <div className="w-full lg:max-w-[30rem] max-w-[20rem] h-[164px] shadow-lg rounded-lg flex flex-col justify-center items-center gap-5 bg-white">
-          <p>المستندات والترجمة</p>
+
+        <div className="w-[373px] lg:w-full lg:col-span-3 bg-white shadow-2xl h-[170px] rounded-lg flex flex-col justify-center items-center p-5 gap-2">
           <Image
-            src="/documents.png"
+            src="/Untitled 5.png"
             alt=""
-            width={700}
-            height={90}
-            className=" object-fill"
+            width={90}
+            height={120}
+            className="object-contain"
           />
+          <p className="font-black text-lg">المصحح الإملائي الذكي</p>
+          <p>أعجم مصحح و معلم في نفس الوقت</p>
+        </div>
+        <div className="w-[373px]  lg:w-full lg:col-span-5 bg-white shadow-2xl h-[170px] rounded-lg flex flex-col justify-center items-center p-5 gap-2">
+          <Image
+            src="/Untitled 7.png"
+            alt=""
+            width={50}
+            height={90}
+            className="object-contain"
+          />
+          <p className="font-black text-sm lg:text-lg" dir="rtl">
+            اداة لمشاركة المختصين في إثراء بيانات المعجم (Crowdsourcing)
+          </p>
+          <p className="text-sm lg:text-base">
+            أعجم يجمع الكلمات في قواعد بيانات ومن ثم يرسلها إلى المختصين
+          </p>
+        </div>
+        <div className="w-[373px]  lg:w-full lg:col-span-3 bg-white shadow-2xl h-[170px] rounded-lg flex flex-col justify-center items-center p-5 gap-2">
+          <Image
+            src="/Untitled 6.png"
+            alt=""
+            width={90}
+            height={120}
+            className="object-contain"
+          />
+          <p className="font-black text-lg">يدعم مختلف أنواع الملفات</p>
+          <p dir="rtl">أعجم بإمكانه فهم (dox,pdf,txt,...)</p>
         </div>
       </div>
       <Bottom />

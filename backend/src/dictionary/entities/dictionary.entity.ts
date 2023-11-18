@@ -3,8 +3,8 @@ import { IDictionaryResponse } from '../types/dictionary';
 
 @Entity()
 export class Dictionary {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
   @Column({ type: 'text', nullable: false })
   word: string;
   @Column({ type: 'json', nullable: true })

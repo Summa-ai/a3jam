@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import databaseConfig from '../config/database.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LlmModule } from './llm/llm.module';
 import { DictionaryModule } from './dictionary/dictionary.module';
+import { LlmModule } from './llm/llm.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { DictionaryModule } from './dictionary/dictionary.module';
       }),
       inject: [ConfigService],
     }),
+    EventEmitterModule.forRoot(),
     LlmModule,
     DictionaryModule,
   ],

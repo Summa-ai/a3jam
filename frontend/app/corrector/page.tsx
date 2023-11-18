@@ -13,8 +13,6 @@ import { Textarea } from "../../components/ui/textarea";
 import { Toaster } from "../../components/ui/toaster";
 import { useToast } from "../../components/ui/use-toast";
 import { cn } from "../../lib/utils";
-import AppBar from "../../shared/appBar";
-import Bottom from "../../shared/bottomBar";
 import { IMessageResponse, IRequest } from "../../types/message";
 import { getResponse } from "../actions";
 import CorrectionPopover from "./components/correctionPopover";
@@ -27,21 +25,7 @@ export default function Corrector() {
     typing_and_grammar: true,
   });
 
-  const [results, setResults] = useState<IMessageResponse | null>({
-    words: [
-      {
-        word: "أهلاً",
-        parsing: "حال منصوب وعلامة نصبه الفتحة الظاهرة على آخره",
-        meaning: "كلمة تُستخدم للترحيب بالضيف أو الشخص القادم",
-      },
-      {
-        word: "وسهلاً",
-        parsing:
-          "معطوفة على (أهلاً) حال منصوب وعلامة نصبها الفتحة الظاهرة على آخرها",
-        meaning: "كلمة تدل على الترحيب وتيسير الأمور وراحة الضيف",
-      },
-    ],
-  });
+  const [results, setResults] = useState<IMessageResponse | null>();
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
@@ -89,9 +73,8 @@ export default function Corrector() {
   return (
     <>
       <Toaster />
-      <div className="flex flex-col h-screen justify-between">
+      <div className="">
         <div className="w-screen">
-          <AppBar />
           <div className="h-7" />
           {results ? (
             <div className="w-screen px-7">
@@ -235,8 +218,6 @@ export default function Corrector() {
             </div>
           )}
         </div>
-        <div className="h-10" />
-        <Bottom />
       </div>
     </>
   );
