@@ -5,8 +5,6 @@ import OpenAI from 'openai';
 import { MessageContentText } from 'openai/resources/beta/threads/messages/messages';
 import { Repository } from 'typeorm';
 import { Dictionary } from '../dictionary/entities/dictionary.entity';
-import { CreateLlmDto } from './dto/create-llm.dto';
-import { UpdateLlmDto } from './dto/update-llm.dto';
 import { ICreateOrderEvent } from './types/createOrderEvent';
 
 @Injectable()
@@ -15,22 +13,6 @@ export class LlmService {
     @InjectRepository(Dictionary)
     private readonly dictionary: Repository<Dictionary>,
   ) {}
-  create(createLlmDto: CreateLlmDto) {
-    return 'This action adds a new llm';
-  }
-
-  findAll() {
-    return `This action returns all llm`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} llm`;
-  }
-
-  update(id: number, updateLlmDto: UpdateLlmDto) {
-    return `This action updates a #${id} llm`;
-  }
-
   @OnEvent('order.created')
   async llm(payload: ICreateOrderEvent) {
     console.log('Event start');
@@ -62,7 +44,6 @@ export class LlmService {
       )
       .pop();
 
-    // If an assistant message is found, console.log() it
     if (lastMessageForRun) {
       console.log(
         (lastMessageForRun.content[0] as MessageContentText).text.value,
