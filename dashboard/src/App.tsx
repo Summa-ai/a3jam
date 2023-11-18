@@ -43,7 +43,7 @@ import { Register } from "./pages/register";
 function App() {
   const { t, i18n } = useTranslation();
 
-  const API_URL = "http://localhost:3002/admin";
+  const API_URL = import.meta.env.VITE_BACKEND_URL!;
   const dataProvider = nestjsxCrudDataProvider(API_URL);
 
   const i18nProvider = {
@@ -68,9 +68,7 @@ function App() {
                   {
                     name: "dictionary",
                     list: "/dictionary",
-                    create: "/dictionary/create",
                     edit: "/dictionary/edit/:id",
-                    show: "/dictionary/show/:id",
                     meta: {
                       canDelete: true,
                     },
@@ -94,11 +92,7 @@ function App() {
                           Header={() => <Header sticky />}
                           Sider={(props) => <ThemedSiderV2 {...props} fixed />}
                           Title={({ collapsed }) => (
-                            <ThemedTitleV2
-                              collapsed={collapsed}
-                              text="أعجم"
-                              // icon={<AppIcon />}
-                            />
+                            <ThemedTitleV2 collapsed={collapsed} text="أعجم" />
                           )}
                         >
                           <Outlet />

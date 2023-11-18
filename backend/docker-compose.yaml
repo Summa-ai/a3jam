@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  # db:
+  #image: postgres
+  #restart: always
+  # environment:
+  #  - POSTGRES_PASSWORD=${DB_PASSWORD}
+  #container_name: postgres
+  #volumes:
+  #- ./pgdata:/var/lib/postgresql/data
+  #ports:
+  # - '5431:5432'
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3002:3002'
+    network_mode: 'host'
