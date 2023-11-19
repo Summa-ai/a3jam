@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import databaseConfig from '../config/database.config';
+import siwarConfig from '../config/siwar.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DictionaryModule } from './dictionary/dictionary.module';
@@ -13,7 +14,7 @@ import { LlmModule } from './llm/llm.module';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
-      load: [databaseConfig],
+      load: [databaseConfig, siwarConfig],
       cache: true,
     }),
     TypeOrmModule.forRootAsync({
