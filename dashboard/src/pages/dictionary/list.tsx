@@ -1,10 +1,4 @@
-import {
-  DeleteButton,
-  EditButton,
-  List,
-  ShowButton,
-  useTable,
-} from "@refinedev/antd";
+import { DeleteButton, List, useTable } from "@refinedev/antd";
 import {
   BaseRecord,
   IResourceComponentsProps,
@@ -49,8 +43,8 @@ export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>
-              <EditButton hideText size="small" recordItemId={record.id} />
-              <ShowButton hideText size="small" recordItemId={record.id} />
+              {/* <EditButton hideText size="small" recordItemId={record.id} />
+              <ShowButton hideText size="small" recordItemId={record.id} /> */}
               <DeleteButton hideText size="small" recordItemId={record.id} />
             </Space>
           )}
