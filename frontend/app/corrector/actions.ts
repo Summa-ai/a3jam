@@ -11,9 +11,9 @@ export async function getDictionaryResponse(word: string) {
       },
     }
   ).then((res) => res.json());
-  console.log(response);
+  console.log(process.env.BACKEND_URL);
   if (response.length === 0) {
-    const request = await fetch(process.env.BACKEND_RUL!, {
+    const request = await fetch(`${process.env.BACKEND_URL!}/dictionary`, {
       method: "POST",
       body: JSON.stringify({ word: word }),
       headers: {

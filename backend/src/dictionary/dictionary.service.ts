@@ -25,7 +25,7 @@ export class DictionaryService {
       word: results.word,
     });
 
-    return 'ok';
+    return { message: 'ok' };
   }
 
   async createEntry(createEntryDto: CreateEntryDto) {
