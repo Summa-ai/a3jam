@@ -1,7 +1,9 @@
 import { HttpService } from '@nestjs/axios';
+import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Queue } from 'bull';
 import { Repository } from 'typeorm';
 import {
   CreateDictionaryDto,
@@ -16,11 +18,17 @@ export class DictionaryService {
     private readonly dictionary: Repository<Dictionary>,
     private eventEmitter: EventEmitter2,
     private readonly httpService: HttpService,
+    @InjectQueue('dictionary') private queue: Queue,
   ) {}
   async create(createDictionaryDto: CreateDictionaryDto) {
     const results = await this.dictionary.save(createDictionaryDto);
 
     this.eventEmitter.emit('order.created', {
+      id: results.id,
+      word: results.word,
+    });
+
+    await this.queue.add({
       id: results.id,
       word: results.word,
     });

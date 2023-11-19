@@ -1,20 +1,21 @@
+import { Process, Processor } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
-import { OnEvent } from '@nestjs/event-emitter';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Job } from 'bull';
 import OpenAI from 'openai';
 import { MessageContentText } from 'openai/resources/beta/threads/messages/messages';
 import { Repository } from 'typeorm';
 import { Dictionary } from '../dictionary/entities/dictionary.entity';
-import { ICreateOrderEvent } from './types/createOrderEvent';
 
+@Processor('dictionary')
 @Injectable()
 export class LlmService {
   constructor(
     @InjectRepository(Dictionary)
     private readonly dictionary: Repository<Dictionary>,
   ) {}
-  @OnEvent('order.created')
-  async llm(payload: ICreateOrderEvent) {
+  @Process()
+  async llm(job: Job) {
     console.log('Event start');
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
@@ -23,7 +24,7 @@ export class LlmService {
     const thread = await openai.beta.threads.create({});
     await openai.beta.threads.messages.create(thread.id, {
       role: 'user',
-      content: JSON.stringify(payload.word),
+      content: JSON.stringify(job.data.word),
     });
 
     const run = await openai.beta.threads.runs.create(thread.id, {
@@ -51,7 +52,7 @@ export class LlmService {
       const json = (
         lastMessageForRun.content[0] as MessageContentText
       ).text.value.replace(/```json|```/g, '');
-      await this.dictionary.update(payload.id, {
+      await this.dictionary.update(job.data.id, {
         dictionary: JSON.parse(json),
       });
       return JSON.parse(json);

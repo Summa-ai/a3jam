@@ -41,15 +41,21 @@ export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
         <Table.Column dataIndex="word" title={"word"} />
         <Table.Column
           title={"request"}
-          render={(_, record: BaseRecord) =>
-            (!dictionaryIsLoading &&
-              dictionaryData &&
-              JSON.stringify(
-                dictionaryData.data.find((item) => item.id === record.id)!
-                  .dictionary
-              )) ||
-            ""
-          }
+          render={(_, record: BaseRecord) => {
+            if (!dictionaryIsLoading && dictionaryData && dictionaryData.data) {
+              if (
+                dictionaryData.data.find((item) => item.id === record.id)
+                  ?.dictionary
+              ) {
+                return JSON.stringify(
+                  dictionaryData.data.find((item) => item.id === record.id)
+                    ?.dictionary || ""
+                );
+              }
+            } else {
+              return "";
+            }
+          }}
         />
         <Table.Column
           title={translate("table.actions")}

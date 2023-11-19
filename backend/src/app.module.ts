@@ -1,3 +1,4 @@
+import { BullModule } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
@@ -16,6 +17,12 @@ import { LlmModule } from './llm/llm.module';
       isGlobal: true,
       load: [databaseConfig, siwarConfig],
       cache: true,
+    }),
+    BullModule.forRoot({
+      redis: {
+        host: '127.0.0.1',
+        port: 6378,
+      },
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
