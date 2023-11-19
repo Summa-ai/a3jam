@@ -43,7 +43,7 @@ function App() {
   const { t, i18n } = useTranslation();
 
   const API_URL = import.meta.env.VITE_BACKEND_URL!;
-  const dataProvider = nestjsxCrudDataProvider(API_URL);
+  const dataProvider = nestjsxCrudDataProvider(`${API_URL}/admin`);
 
   const i18nProvider = {
     translate: (key: string, params: object) => t(key, params),

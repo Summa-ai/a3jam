@@ -5,9 +5,10 @@ import {
   useMany,
   useTranslate,
 } from "@refinedev/core";
-import { Space, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import React from "react";
-
+import { SendIcon } from "../../components/app-icon";
+const API_URL = import.meta.env.VITE_BACKEND_URL!;
 export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
   const translate = useTranslate();
   const { tableProps } = useTable({
@@ -22,20 +23,29 @@ export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
     },
   });
 
+  async function sendRequest(record: BaseRecord) {
+    const result = await fetch(`${API_URL}/dictionary/entry`, {
+      method: "POST",
+      body: JSON.stringify({ entry: record.dictionary }),
+    });
+    console.log(result);
+  }
+
   return (
     <List>
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="id" title={"ID"} />
         <Table.Column dataIndex="word" title={"word"} />
         <Table.Column
-          dataIndex={["dictionary"]}
           title={"request"}
           render={(_, record: BaseRecord) =>
-            dictionaryData &&
-            JSON.stringify(
-              dictionaryData!.data!.find((item) => item.id === record.id)!
-                .dictionary
-            )
+            (!dictionaryIsLoading &&
+              dictionaryData &&
+              JSON.stringify(
+                dictionaryData.data.find((item) => item.id === record.id)!
+                  .dictionary
+              )) ||
+            ""
           }
         />
         <Table.Column
@@ -45,6 +55,11 @@ export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
             <Space>
               {/* <EditButton hideText size="small" recordItemId={record.id} />
               <ShowButton hideText size="small" recordItemId={record.id} /> */}
+              <Button
+                size="small"
+                icon={SendIcon}
+                onClick={() => sendRequest(record)}
+              />
               <DeleteButton hideText size="small" recordItemId={record.id} />
             </Space>
           )}
