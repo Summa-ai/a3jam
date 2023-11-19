@@ -27,6 +27,9 @@ export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
     const result = await fetch(`${API_URL}/dictionary/entry`, {
       method: "POST",
       body: JSON.stringify({ entry: record.dictionary }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     console.log(result);
   }

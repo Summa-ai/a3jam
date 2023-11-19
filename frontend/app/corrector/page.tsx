@@ -134,6 +134,7 @@ export default function Corrector() {
                   rows={10}
                   className="w-full bg-[#FBFBFB]"
                   placeholder="أدخل النص المراد تدقيقه ..."
+                  maxLength={150}
                 />
               </div>
               <div className="flex flex-col">
