@@ -3,14 +3,17 @@ import {
   BaseRecord,
   IResourceComponentsProps,
   useMany,
+  useNotification,
   useTranslate,
 } from "@refinedev/core";
 import { Button, Space, Table } from "antd";
+
 import React from "react";
 import { SendIcon } from "../../components/app-icon";
 const API_URL = import.meta.env.VITE_BACKEND_URL!;
 export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
   const translate = useTranslate();
+  const { open, close } = useNotification();
   const { tableProps } = useTable({
     syncWithLocation: true,
   });
@@ -31,7 +34,11 @@ export const DictionaryList: React.FC<IResourceComponentsProps> = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log(result);
+    open?.({
+      type: "success",
+      message: "تم إضافة كلمة جديدة إلى معجم الرياض",
+      description: `نجحت إضافة الكلمة (${record.word})`,
+    });
   }
 
   return (
