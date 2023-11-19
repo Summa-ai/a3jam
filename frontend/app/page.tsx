@@ -23,7 +23,7 @@ export default function Home() {
           <div className="h-5" />
           <Link
             href="/corrector"
-            className="bg-[#009CA2] border-[1px] border-[#008677] shadow-lg text-white py-2 px-3 rounded-md z-50 font-rtl"
+            className="bg-[#009CA2] border-[1px] border-[#008677] shadow-lg text-white py-2 px-3 rounded-md z-50 font-zarid"
           >
             جرب أعجم الآن - التجربة المجانية
           </Link>
@@ -43,7 +43,7 @@ export default function Home() {
         className="flex flex-col justify-center items-center text-text"
         dir="rtl"
       >
-        <p className="font-rtl text-primaryLight text-3xl">مزايا أعجم</p>
+        <p className="font-zarid text-primaryLight text-3xl">مزايا أعجم</p>
         <div className="h-[16px]" />
         <p>يدعم أعجم 6 مستهدفات برمجان اللغة العربية 2023</p>
       </div>

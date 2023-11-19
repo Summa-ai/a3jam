@@ -107,13 +107,13 @@ export default function Corrector() {
                   className="w-[120px] h-[45px] bg-primaryLight rounded-lg shadow-md flex flex-row justify-center items-center gap-2 text-white hover:bg-white hover:text-primaryLight"
                   onClick={newText}
                 >
-                  <p className="text-lg font-rtl">نص جديد</p>
+                  <p className="text-lg font-zarid">نص جديد</p>
                 </Button>
                 <Button
                   className="w-[160px] h-[45px] bg-[#FBFBFB] rounded-lg shadow-md flex flex-row justify-center items-center gap-2 hover:bg-primaryLight hover:text-white text-primaryLight"
                   onClick={copyText}
                 >
-                  <p className="text-lg  font-rtl">نسخ النص</p>
+                  <p className="text-lg  font-zarid">نسخ النص</p>
                   <Image width={20} height={20} alt="" src="/copyIcon.png" />
                 </Button>
               </div>
@@ -123,7 +123,7 @@ export default function Corrector() {
               className="gap-5 flex flex-col w-full justify-center items-center"
               dir="rtl"
             >
-              <p className="text-primaryLight font-rtl text-lg">
+              <p className="text-primaryLight font-zarid text-lg">
                 المدقق و المعرب الذكي
               </p>
               <div className="px-10 w-screen">
@@ -153,7 +153,7 @@ export default function Corrector() {
                     <RadioGroupItem value="false" id="r1" />
                     <Label
                       htmlFor="r1"
-                      className="text-primaryLight font-rtl text-md"
+                      className="text-primaryLight font-zarid text-md"
                     >
                       تصحيح إملائي
                     </Label>
@@ -162,7 +162,7 @@ export default function Corrector() {
                     <RadioGroupItem value="true" id="r2" />
                     <Label
                       htmlFor="r2"
-                      className="text-primaryLight font-rtl text-md"
+                      className="text-primaryLight font-zarid text-md"
                     >
                       تصحيح إملائي و نحوي
                     </Label>
@@ -180,7 +180,7 @@ export default function Corrector() {
                     <div className="w-2" />
                     <label
                       htmlFor="parsing"
-                      className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primaryLight font-rtl"
+                      className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primaryLight font-zarid"
                     >
                       الإعراب
                     </label>
@@ -195,7 +195,7 @@ export default function Corrector() {
                     <div className="w-2" />
                     <label
                       htmlFor="meaning"
-                      className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primaryLight font-rtl"
+                      className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primaryLight font-zarid"
                     >
                       المعاني
                     </label>
@@ -208,7 +208,7 @@ export default function Corrector() {
                 disabled={loading}
               >
                 {!loading ? (
-                  <p className="font-rtl">إبدأ يا اعجم</p>
+                  <p className="font-zarid">إبدأ يا اعجم</p>
                 ) : (
                   <div className="flex flex-row gap-2 items-center">
                     <ReloadIcon className="mr-2 h-4 w-4 animate-spin text-white" />

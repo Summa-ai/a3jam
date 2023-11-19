@@ -18,8 +18,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        // rtl: ['var(--font-poppins)']
         rtl: ["RTL"],
+        zarid: ['ZARID'],
         tajwal: ['Tajawal', 'sans-serif']
       },
       colors: {

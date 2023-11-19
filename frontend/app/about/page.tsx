@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="felx flex-col justify-center items-center py-5" dir="rtl">
-      <p className="flex flex-row justify-center items-center font-rtl text-primaryLight text-2xl">
+      <p className="flex flex-row justify-center items-center font-zarid text-primaryLight text-2xl">
         ماهو اعجم؟
       </p>
       <div className="h-5" />
@@ -13,7 +13,7 @@ export default function About() {
       </p>
       <div className="h-5" />
 
-      <p className="flex flex-row justify-center items-center font-rtl text-primaryLight text-2xl">
+      <p className="flex flex-row justify-center items-center font-zarid text-primaryLight text-2xl">
         لماذا مشروعكم مفتوح المصدر وهو ممتاز جدا؟
       </p>
       <div className="h-5" />
