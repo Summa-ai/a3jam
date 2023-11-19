@@ -10,9 +10,6 @@
 -   Precisely parse each word for comprehensive understanding.
 -   Provide clear and concise meanings for every word encountered.
 
-## Create files and folders
-
-The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the **New file** button in the file explorer. You can also create folders by clicking the **New folder** button.
 
 ## Structure
 
