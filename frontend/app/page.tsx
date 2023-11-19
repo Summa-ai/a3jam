@@ -43,7 +43,7 @@ export default function Home() {
         className="flex flex-col justify-center items-center text-text"
         dir="rtl"
       >
-        <p className="font-rtl text-primaryLight text-3xl">مزايا اعجم</p>
+        <p className="font-rtl text-primaryLight text-3xl">مزايا أعجم</p>
         <div className="h-[16px]" />
         <p>يدعم أعجم 6 مستهدفات برمجان اللغة العربية 2023</p>
       </div>
