@@ -20,8 +20,8 @@ import CorrectionPopover from "./components/correctionPopover";
 export default function Corrector() {
   const [request, setRequest] = useState<IRequest>({
     sentence: "",
-    meaning: false,
-    parsing: false,
+    meaning: true,
+    parsing: true,
     typing_and_grammar: true,
   });
 
@@ -150,7 +150,7 @@ export default function Corrector() {
                   }
                 >
                   <div className="flex items-center gap-2">
-                    <RadioGroupItem value="false" id="r1" />
+                    <RadioGroupItem disabled value="false" id="r1" />
                     <Label
                       htmlFor="r1"
                       className="text-primaryLight font-zarid text-md"
@@ -173,8 +173,9 @@ export default function Corrector() {
                   <div className="flex items-center">
                     <Checkbox
                       id="parsing"
+                      defaultChecked
                       onCheckedChange={(e) =>
-                        setRequest({ ...request, parsing: true })
+                        setRequest({ ...request, parsing: e as boolean })
                       }
                     />
                     <div className="w-2" />
@@ -188,9 +189,10 @@ export default function Corrector() {
                   <div className="flex items-center">
                     <Checkbox
                       id="meaning"
-                      onCheckedChange={(e) =>
-                        setRequest({ ...request, meaning: true })
-                      }
+                      defaultChecked
+                      onCheckedChange={(e) => {
+                        setRequest({ ...request, meaning: e as boolean });
+                      }}
                     />
                     <div className="w-2" />
                     <label
