@@ -145,12 +145,12 @@ export default function Corrector() {
                   onValueChange={(e) =>
                     setRequest({
                       ...request,
-                      typing_and_grammar: e === "true" ? true : false,
+                      typing_and_grammar: true,
                     })
                   }
                 >
                   <div className="flex items-center gap-2">
-                    <RadioGroupItem disabled value="false" id="r1" />
+                    <RadioGroupItem value="false" id="r1" />
                     <Label
                       htmlFor="r1"
                       className="text-primaryLight font-zarid text-md"
