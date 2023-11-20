@@ -51,7 +51,7 @@ export default function Bottom() {
           className="flex flex-col justify-center items-center lg:justify-start lg:items-start"
           dir="rtl"
         >
-          <p className="font-extrabold text-lg">الأسألة الشائعة</p>
+          <p className="font-extrabold text-lg">الأسئلة الشائعة</p>
           <Link href="/about">عن أعجم</Link>
           <Link href="/corrector">التجربة المجانية</Link>
         </div>
