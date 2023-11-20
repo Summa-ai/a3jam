@@ -145,7 +145,9 @@ export default function Corrector() {
                   onValueChange={(e) =>
                     setRequest({
                       ...request,
-                      typing_and_grammar: true,
+                      typing_and_grammar: e === "true" ? true : false,
+                      meaning: e === "false" ?? true,
+                      parsing: e === "false" ?? true,
                     })
                   }
                 >
@@ -174,9 +176,9 @@ export default function Corrector() {
                     <Checkbox
                       id="parsing"
                       defaultChecked
-                      onCheckedChange={(e) =>
-                        setRequest({ ...request, parsing: e as boolean })
-                      }
+                      onCheckedChange={(e) => {
+                        setRequest({ ...request, parsing: e as boolean });
+                      }}
                     />
                     <div className="w-2" />
                     <label
